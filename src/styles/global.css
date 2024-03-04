@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-header{
+  background-image: url('/bg-header.svg');
+  height: 200px;
+}
+
+.bg-footer{
+  background-image: url('/bg-footer.svg');
+  height: 200px;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}

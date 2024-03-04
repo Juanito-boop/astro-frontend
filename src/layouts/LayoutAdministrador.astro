@@ -1,0 +1,44 @@
+---
+import "@/styles/global.css";
+import { Image } from "astro:assets";
+import LogoutLink from "../components/LogOut";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title set:html={title} />
+  </head>
+  <body class="layout">
+    <header class="bg-header min-h-[200px] no-repeat bg-cover bg-center text-white text-xl flex justify-between pt-[4rem] px-[4rem] origin-top-left align-middle relative">
+      <div class="flex flex-col align-middle">
+        <a href="/dashboard/administrador" class="justify-end">
+          Sistema de inventario
+        </a>
+      </div>
+      <div class="flex flex-row gap-4 align-middle [&>a]:no-underline">
+        <a href="/dashboard/administrador/usuarios">usuarios</a>
+        <a href="/dashboard/administrador/facturas">facturas</a>
+        <a href="/dashboard/administrador/productos">productos</a>
+        <LogoutLink client:idle />
+      </div>
+    </header>
+    <main class="main-container hide-scroll-bar ">
+      <slot />
+    </main>
+    <footer class="bg-footer min-h-[200px] flex flex-row gap-12 justify-center pt-[100px]">
+      <Image src="/SantoTomas.svg" width={199} height={58} alt="" loading="eager" />
+      <Image src="/CCLogo.svg" width={78} height={58} alt="" loading="eager" />
+    </footer>
+  </body>
+</html>
