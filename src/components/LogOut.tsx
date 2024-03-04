@@ -15,7 +15,7 @@ export default function LogoutLink() {
   return (
     <>
       <a id="logout-link" href="/">
-        <img src="/logout.svg" alt="" width={30} height={30} className="rounded-full" loading="eager"/>
+        <img src="/astro-frontend/logout.svg" alt="" width={30} height={30} className="rounded-full" loading="eager"/>
       </a>
     </>
   );

@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 .bg-header{
-  background-image: url('/bg-header.svg');
+  background-image: url('/astro-frontend/bg-header.svg');
   height: 200px;
 }
 
 .bg-footer{
-  background-image: url('/bg-footer.svg');
+  background-image: url('/astro-frontend/bg-footer.svg');
   height: 200px;
 }
 

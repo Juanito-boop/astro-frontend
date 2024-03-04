@@ -9,29 +9,29 @@ import Layout from "@/layouts/LayoutAdministrador.astro"
   <div class="flex flex-col gap-10 mac:my-[93px]">
     <div class="flex flex-row justify-around">
       <div class="flex flex-col">
-        <a href="/dashboard/administrador/usuarios">
-          <Image width={220} height={300} alt="user" src="/user.svg" loading="eager" />
+        <a href="/astro-frontend/dashboard/administrador/usuarios">
+          <Image width={220} height={300} alt="user" src="/astro-frontend/user.svg" loading="eager" />
         </a>
         <span class="text-2xl font-semibold text-center text-principal-color">Usuarios</span>
       </div>
       <div class="flex flex-col">
-        <a href="/dashboard/administrador/facturas">
-          <Image width={220} height={300} alt="bills" src="/facturas.svg" loading="eager" />
+        <a href="/astro-frontend/dashboard/administrador/facturas">
+          <Image width={220} height={300} alt="bills" src="/astro-frontend/facturas.svg" loading="eager" />
         </a>
         <span class="text-2xl font-semibold text-center text-principal-color">Facturas</span>
       </div>
       <div class="flex flex-col">
-        <a href="/dashboard/administrador/productos">
-          <Image width={220} height={300} alt="products" src="/products.svg" loading="eager" />
+        <a href="/astro-frontend/dashboard/administrador/productos">
+          <Image width={220} height={300} alt="products" src="/astro-frontend/products.svg" loading="eager" />
         </a>
         <span class="text-2xl font-semibold text-center text-principal-color">Productos</span>
       </div>
     </div>
     <div class="flex flex-row justify-around">
-      <Ventas tituloTarjeta="Ventas Anuales" client:load/>
-      <Ventas tituloTarjeta="Ventas Mensuales" client:load/>
-      <Ventas tituloTarjeta="Ventas Diarias" client:load/>
-      <Ventas tituloTarjeta="Cantidad de productos" client:load/>
+      <Ventas tituloTarjeta="Ventas Anuales"  client:only="react"/>
+      <Ventas tituloTarjeta="Ventas Mensuales"  client:only="react"/>
+      <Ventas tituloTarjeta="Ventas Diarias"  client:only="react"/>
+      <Ventas tituloTarjeta="Cantidad de productos"  client:only="react"/>
     </div>
   </div>
 </Layout>
