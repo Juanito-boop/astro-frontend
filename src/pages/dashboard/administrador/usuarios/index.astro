@@ -1,7 +1,8 @@
 ---
 import Layout from "@/layouts/LayoutAdministrador.astro";
+import UsersPage from "./Usuarios"
 ---
 
 <Layout title="pagina principal administrador">
-  <h1>hola </h1>
+  <UsersPage client:only="react" />
 </Layout>

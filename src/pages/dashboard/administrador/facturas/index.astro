@@ -1,7 +1,8 @@
 ---
 import Layout from "@/layouts/LayoutAdministrador.astro";
+import Facturas from "@/components/shadcn/facturas/page"
 ---
 
-<Layout title="pagina principal administrador">
-  <h1>hola </h1>
+<Layout title="Visor de Facturas">
+  <Facturas client:only="react" />
 </Layout>

@@ -1,14 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-} from "@tanstack/react-table";
+import type { ColumnDef, ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import {
   flexRender,
   getCoreRowModel,
@@ -28,18 +22,13 @@ import {
 } from "@/components/ui/table";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+  columns: ColumnDef<TData, TValue>[]
+  data: TData[]
 }
 
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    []
-  );
+export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const table = useReactTable({
     data,
     columns,
@@ -53,25 +42,20 @@ export function DataTable<TData, TValue>({
       sorting,
       columnFilters,
     },
-  });
+  })
 
-  // Set page size to 5
   useEffect(() => {
-    table.setPageSize(5);
-  }, [table]);
+    table.setPageSize(5)
+  }, [table])
 
   return (
     <div>
       <div className="flex items-center pb-4">
         <Input
-          placeholder={`Buscar nombre de usuario ...`}
-          value={
-            (table.getColumn("username")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("username")?.setFilterValue(event.target.value)
-          }
-          className={`max-w-sm`}
+          placeholder="Buscar producto ..."
+          value={(table.getColumn('nombre')?.getFilterValue() as string) ?? ''}
+          onChange={(event) => table.getColumn('nombre')?.setFilterValue(event.target.value)}
+          className="max-w-sm"
         />
       </div>
       <div className="rounded-md border max-h-fit">
@@ -82,14 +66,9 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
-                  );
+                  )
                 })}
               </TableRow>
             ))}
@@ -97,26 +76,15 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
+                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
+                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
+                <TableCell colSpan={columns.length} className="h-24 text-center">
                   No results.
                 </TableCell>
               </TableRow>
@@ -133,5 +101,5 @@ export function DataTable<TData, TValue>({
         </Button>
       </div>
     </div>
-  );
+  )
 }
