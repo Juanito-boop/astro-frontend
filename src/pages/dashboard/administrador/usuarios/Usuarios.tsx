@@ -35,14 +35,14 @@ export default function UsersPage(){
           <div className="text-2xl text-center text-[#3D3F51]">Cargando...</div>
         </div>
         ) : (
-          <div className="grid grid-cols-2 justify-around gap-5 my-10">
-            <div className="flex flex-col px-10 col-span-1">
+          <div className="grid justify-around grid-cols-2 gap-5 my-10">
+            <div className="flex flex-col col-span-1 gap-4 px-10">
               <h1 className="text-[#3D3F51] text-2xl">Administrar Usuarios</h1>
               <form className="bg-[#FF6861] rounded-md p-4 gap-4 [&>div]:mb-3">
-                <div className="shadow-2xl flex flex-col">
+                <div className="flex flex-col shadow-2xl">
                   <label htmlFor="user">Usuario</label>
                   <input
-                    className="text-black p-3 rounded-md focus:outline-none focus:placeholder-transparent"
+                    className="p-3 text-black rounded-md focus:outline-none focus:placeholder-transparent"
                     id="userField"
                     name="user"
                     onChange={(event) => setUsername(event.target.value)}
@@ -52,11 +52,11 @@ export default function UsersPage(){
                     value={username}
                   />
                 </div>
-                <div className="shadow-2xl flex flex-col">
+                <div className="flex flex-col shadow-2xl">
                   <label htmlFor="pass">Contraseña</label>
                   <div className="relative flex flex-row">
                     <input
-                      className="text-black py-3 pl-3 pr-9 w-full rounded-md focus:outline-none focus:placeholder-transparent"
+                      className="w-full py-3 pl-3 text-black rounded-md pr-9 focus:outline-none focus:placeholder-transparent"
                       id="passwordField"
                       name="pass"
                       onChange={(event) => setPassword(event.target.value)}

@@ -34,8 +34,8 @@ export default function BillsTable() {
 
   return (
     <>
-      <div className="flex flex-col mx-10 gap-4">
-        <h1 className="justify-start text-5xl text-principal-color">Facturas</h1>
+      <div className="flex flex-col gap-4 mx-10">
+        <h1 className="justify-start text-2xl text-principal-color">Facturas</h1>
         <div className="bg-[#F4E9E9] rounded-md p-4 gap-3 container mx-auto">
           <DataTable columns={columns} data={data} />
         </div>
