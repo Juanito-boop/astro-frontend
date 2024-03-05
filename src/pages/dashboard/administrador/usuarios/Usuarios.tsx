@@ -8,7 +8,31 @@ export default function UsersPage(){
   const [password, setPassword] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [tienda, setTienda] = useState<number>(0);
+  
   useEffect(() => {
+    const rowString = localStorage.getItem('selectedRow');
+    if (typeof rowString === 'string' && rowString !== '') {
+      try {
+        const objetoRecuperado = JSON.parse(rowString) as JsonUser;
+        console.log(objetoRecuperado);
+        // Realizar acciones con objetoRecuperado
+      } catch (error) {
+        console.error('Error al analizar el JSON:', error);
+        // Manejar el error, puede ser una cadena no válida JSON
+      }
+    } else {
+      console.log('El valor recuperado no es una cadena de texto JSON válida.');
+    }
+    const token = localStorage.getItem('token');
+    if (token) {
+      const tokenDecoded = jwtDecode(token) as JsonUser;
+      const { id_tienda } = tokenDecoded;
+      localStorage.setItem('id_tienda', id_tienda.toString());
+      console.log(id_tienda)
+      setTienda(id_tienda);
+    } else {
+      console.log('No token found in localStorage.');
+    }
     setIsLoading(false);
   })
   
@@ -42,42 +66,25 @@ export default function UsersPage(){
                 <div className="flex flex-col shadow-2xl">
                   <label htmlFor="user">Usuario</label>
                   <input
-                    className="p-3 text-black rounded-md focus:outline-none focus:placeholder-transparent"
                     id="userField"
-                    name="user"
                     onChange={(event) => setUsername(event.target.value)}
-                    placeholder="Nombre de Usuario"
-                    required
-                    type="text"
-                    value={username}
-                  />
+                    className="p-3 text-black rounded-md focus:outline-none focus:placeholder-transparent"
+                    name="user" placeholder="Nombre de Usuario" type="text" value={username} required />
                 </div>
                 <div className="flex flex-col shadow-2xl">
                   <label htmlFor="pass">Contraseña</label>
                   <div className="relative flex flex-row">
                     <input
-                      className="w-full py-3 pl-3 text-black rounded-md pr-9 focus:outline-none focus:placeholder-transparent"
                       id="passwordField"
-                      name="pass"
                       onChange={(event) => setPassword(event.target.value)}
-                      placeholder="********"
-                      required
-                      type="password"
-                      value={password}
-                    />
+                      className="w-full py-3 pl-3 text-black rounded-md pr-9 focus:outline-none focus:placeholder-transparent"
+                      name="pass" placeholder="********" type="password" value={password} required />
                     <img
-                      onClick={handleShowPassword}
-                      className="absolute right-0 py-3 mr-3 cursor-pointer" 
+                      onClick={handleShowPassword} className="absolute right-0 py-3 mr-3 cursor-pointer" 
                       src="/astro-frontend/closeEye.svg" width={24} height={24} alt="Eye" id="Eye" />
                   </div>
                 </div>
-                <button
-                  className="bg-[#3D3F51] py-2 rounded-md w-full"
-                  onClick={handleSubmit}
-                  type="submit"
-                >
-                  Guardar
-                </button>
+                <button className="bg-[#3D3F51] py-2 rounded-md w-full" onClick={handleSubmit} type="submit">Guardar</button>
               </form>
             </div>
             <div className="col-span-1">
