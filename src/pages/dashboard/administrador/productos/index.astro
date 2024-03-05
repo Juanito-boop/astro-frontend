@@ -1,8 +1,19 @@
 ---
-import Layout from "@/layouts/LayoutAdministrador.astro";
+import Link from "@/components/Link.astro";
 import ProductsTable from "@/components/shadcn/productos/page";
+import Layout from "@/layouts/LayoutAdministrador.astro";
 ---
 
 <Layout title="pagina principal administrador">
-  <ProductsTable client:only="react" />
+  <div class="grid grid-cols-[80%,_1fr] justify-around gap-5">
+    <ProductsTable client:only="react" />
+    <div class="flex flex-col gap-4 my-auto">
+      <Link href="administrador/productos/new-product" className="rounded-md bg-[#FF6861] p-4 mx-10 text-center align-middle">
+        Crear nuevo producto
+      </Link>
+      <Link href="administrador/productos/new-category" className="rounded-md bg-[#FF6861] p-4 mx-10 text-center align-middle">
+        Crear nueva categoria
+      </Link>
+    </div>
+  </div>
 </Layout>
