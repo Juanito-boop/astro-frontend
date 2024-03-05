@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import type { JsonUser } from "@/Json";
 import UsersTable from "@/components/shadcn/usuarios/page";
+import { obtenerUsuario } from "@/functions/app";
 
 export default function UsersPage(){
+  const usuario = obtenerUsuario();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const tienda = usuario.id_tienda;
   const [isLoading, setIsLoading] = useState(false);
-  const [tienda, setTienda] = useState<number>(0);
   
   useEffect(() => {
     const rowString = localStorage.getItem('selectedRow');
@@ -22,16 +24,6 @@ export default function UsersPage(){
       }
     } else {
       console.log('El valor recuperado no es una cadena de texto JSON válida.');
-    }
-    const token = localStorage.getItem('token');
-    if (token) {
-      const tokenDecoded = jwtDecode(token) as JsonUser;
-      const { id_tienda } = tokenDecoded;
-      localStorage.setItem('id_tienda', id_tienda.toString());
-      console.log(id_tienda)
-      setTienda(id_tienda);
-    } else {
-      console.log('No token found in localStorage.');
     }
     setIsLoading(false);
   })
