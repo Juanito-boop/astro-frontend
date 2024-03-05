@@ -49,7 +49,7 @@ export default function LoginFields() {
     const passwordField = document.querySelector('#passwordField') as HTMLInputElement
     const eyeToogle = document.querySelector('#Eye') as HTMLImageElement
     if (passwordField.type === 'password') {
-      eyeToogle.src = '/openEye.svg'
+      eyeToogle.src = '/astro-frontend/openEye.svg'
       passwordField.type = 'text'
     } else {
       eyeToogle.src = '/astro-frontend/closeEye.svg'
