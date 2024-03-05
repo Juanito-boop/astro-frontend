@@ -8,8 +8,7 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
-        "mac": "1512px",
+        "2xl": "1512px",
       },
     },
     extend: {
