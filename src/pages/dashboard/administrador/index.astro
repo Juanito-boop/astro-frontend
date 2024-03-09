@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css"
 import { Image } from "astro:assets"
-import Ventas from "@/components/Ventas"
+import Ventas from "@/components/react/Ventas"
 import Layout from "@/layouts/LayoutAdministrador.astro"
 import Link from "@/components/Link.astro"
 ---
@@ -11,13 +11,13 @@ import Link from "@/components/Link.astro"
     <div class="flex flex-row justify-around">
       <div class="flex flex-col">
         <Link href="dashboard/administrador/usuarios">
-          <Image width={220} height={300} alt="user" src="/astro-frontend/user.svg" loading="eager" />
+          <Image width={220} height={300} alt="user"     src="/astro-frontend/user.svg"     loading="eager" />
         </Link>
         <span class="text-2xl font-semibold text-center text-principal-color">Usuarios</span>
       </div>
       <div class="flex flex-col">
         <Link href="dashboard/administrador/facturas">
-          <Image width={220} height={300} alt="bills" src="/astro-frontend/facturas.svg" loading="eager" />
+          <Image width={220} height={300} alt="bills"    src="/astro-frontend/facturas.svg" loading="eager" />
         </Link>
         <span class="text-2xl font-semibold text-center text-principal-color">Facturas</span>
       </div>
@@ -29,10 +29,10 @@ import Link from "@/components/Link.astro"
       </div>
     </div>
     <div class="flex flex-row justify-around">
-      <Ventas tituloTarjeta="Ventas Anuales"  client:only="react" />
-      <Ventas tituloTarjeta="Ventas Mensuales"  client:only="react" />
-      <Ventas tituloTarjeta="Ventas Diarias"  client:only="react" />
-      <Ventas tituloTarjeta="Cantidad de productos"  client:only="react" />
+      <Ventas tituloTarjeta="Ventas Anuales"        ariaLabel="Ventas Anuales"        client:only="react" />
+      <Ventas tituloTarjeta="Ventas Mensuales"      ariaLabel="Ventas Mensuales"      client:only="react" />
+      <Ventas tituloTarjeta="Ventas Diarias"        ariaLabel="Ventas Diarias"        client:only="react" />
+      <Ventas tituloTarjeta="Cantidad de productos" ariaLabel="Cantidad de productos" client:only="react" />
     </div>
   </div>
 </Layout>

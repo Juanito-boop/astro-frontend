@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { obtenerUsuario } from "../functions/app";
-import { postData } from "../functions/peticiones";
+import { obtenerUsuario } from "../../functions/app.ts";
+import { postData } from "../../functions/peticiones.ts";
 
 export default function LoginFields() {
   const [username, setUsername] = useState<string>('')

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { LogOut } from "../functions/app";
+import { LogOut } from "../../functions/app.ts";
 import { Image } from "astro:assets";
 
 export default function LogoutLink() {
@@ -8,13 +8,13 @@ export default function LogoutLink() {
     logoutLink?.addEventListener('click', (e) => {
       e.preventDefault();
       LogOut();
-      window.location.href = '/';
+      window.location.href = '/astro-frontend/';
     });
   }, []);
 
   return (
     <>
-      <a id="logout-link" href="/">
+      <a id="logout-link" href="/astro-frontend/">
         <img src="/astro-frontend/logout.svg" alt="" width={30} height={30} className="rounded-full" loading="eager"/>
       </a>
     </>

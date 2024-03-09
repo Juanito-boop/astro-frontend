@@ -1,7 +1,13 @@
 ---
+import NewCategoryForm from "@/components/react/CategoryForm";
 import Layout from "@/layouts/LayoutAdministrador.astro";
 ---
 
 <Layout title="Nueva Categoria">
-  Hola
+  <div class="grid grid-cols-2 my-10">
+    <div class="col-span-1 mx-auto w-2/3">
+      <h1 class="text-principal-color text-2xl" set:html="Crear Categoria" />
+      <NewCategoryForm />
+    </div>
+  </div>
 </Layout>

@@ -1,14 +1,12 @@
-import type { JsonCategory } from "@/Json";
-import { obtenerUsuario } from "@/functions/app";
-import { postData } from "@/functions/peticiones";
+import type { JsonCategory } from "@/Json.ts";
+import { obtenerUsuario } from "@/functions/app.ts";
+import { postData } from "@/functions/peticiones.ts";
 import { useState } from "react";
 
 export default function NewCategoryForm() {
   const [nombre, setNombre] = useState<string>("");
   const [descripcion, setDescripcion] = useState<string>("");
-  const [categoriaCreada, setCategoriaCreada] = useState<
-    JsonCategory | undefined
-  >(undefined);
+  const [categoriaCreada, setCategoriaCreada] = useState<JsonCategory | undefined>(undefined);
   const usuario = obtenerUsuario();
   const id = usuario.id_tienda;
 
@@ -39,7 +37,8 @@ export default function NewCategoryForm() {
   };
   return (
     <>
-      <form className="bg-secondary-color rounded-md grid p-4 grid-cols-2 gap-y-2 [&>input]:p-2 [&>input]:rounded-md [&>div>input]:p-2 [&>div>input]:rounded-md">
+      <form 
+        className="bg-secondary-color rounded-md grid p-4 grid-cols-2 gap-y-2 [&>input]:p-2 [&>input]:rounded-md [&>div>input]:p-2 [&>div>input]:rounded-md">
         <div className="flex flex-col col-span-2">
           <label htmlFor="nombre">Nombre</label>
           <input
@@ -57,11 +56,7 @@ export default function NewCategoryForm() {
             onChange={(event) => setDescripcion(event.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="bg-principal-color rounded-md col-span-2 py-2"
-        >
+        <button type="submit" onClick={handleSubmit} className="bg-principal-color rounded-md col-span-2 py-2">
           Guardar
         </button>
       </form>

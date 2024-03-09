@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { obtenerFecha, obtenerUsuario } from "../functions/app";
-import { getData } from "../functions/peticiones";
+import { obtenerFecha, obtenerUsuario } from "../../functions/app.ts";
+import { getData } from "../../functions/peticiones.ts";
 
 interface VentasProps {
   tituloTarjeta: string;
+  ariaLabel?: string;
 }
 
-const Ventas: React.FC<VentasProps> = ({ tituloTarjeta }) => {
+const Ventas: React.FC<VentasProps> = ({ tituloTarjeta, ariaLabel }) => {
   const [cantidadFacturasAnuales, setCantidadFacturasAnuales] = useState<number>(0)
   const [cantidadFacturasMensuales, setCantidadFacturasMensuales] = useState<number>(0)
   const [cantidadFacturasDiarias, setCantidadFacturasDiarias] = useState<number>(0)
@@ -68,6 +69,7 @@ const Ventas: React.FC<VentasProps> = ({ tituloTarjeta }) => {
           type="text"
           className="bg-[#E9E0E0] rounded-b-md p-5 text-center"
           value={tituloTarjeta === "Ventas anuales" ? cantidadFacturasAnuales : tituloTarjeta === "Ventas mensuales" ? cantidadFacturasMensuales : tituloTarjeta === "Ventas diarias" ? cantidadFacturasDiarias : 0}
+          aria-label={ariaLabel}
           disabled
         />
       </article>
