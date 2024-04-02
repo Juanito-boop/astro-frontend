@@ -4,6 +4,11 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   prefix: "",
   theme: {
+    colors:{
+      "principal-color":"#3D3F51",
+      "secondary-color":"#FF6861",
+      "tertiary-color":"#E9E0E0",
+    },
     container: {
       center: true,
       padding: "2rem",

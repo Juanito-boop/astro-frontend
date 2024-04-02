@@ -1,6 +1,6 @@
 
-import type { JsonUser } from "@/Json";
-import { getData } from "@/functions/peticiones";
+import type { JsonUser } from "#Json";
+import { getData } from "#functions/peticiones";
 import { useEffect, useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";

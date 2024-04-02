@@ -1,8 +1,8 @@
 ---
 import "#styles/global.css";
 import { Image } from "astro:assets";
-import Link from "../components/Link.astro";
-import LogoutLink from "../components/react/LogOut";
+import Link from "#components/Link.astro";
+import LogoutLink from "#components/react/LogOut";
 
 interface Props {
   title: string;
@@ -23,12 +23,10 @@ const { title } = Astro.props;
   <body class="flex flex-col justify-between h-screen gap-10 layout">
     <header class="bg-header min-h-[200px] no-repeat bg-cover bg-center text-white text-xl flex justify-between p-[4rem] origin-top-left align-middle relative">
       <div class="flex flex-col align-middle">
-        <Link href="dashboard/cajero/facturas" className="justify-end text-tertiary-color" set:html="Sistema de Inventario" />
+        <Link href="dashboard/cajero/facturas" className="justify-end" set:html="Sistema de Inventario" />
       </div>
       <div class="flex flex-row gap-4 align-middle [&>a]:no-underline">
-        <Link href="dashboard/administrador/usuarios" className="text-tertiary-color" set:html="usuarios" />
-        <Link href="dashboard/administrador/facturas" className="text-tertiary-color" set:html="facturas" />
-        <Link href="dashboard/administrador/productos" className="text-tertiary-color" set:html="productos" />
+        <Link href="dashboard/cajero/facturas" set:html="facturas" />
         <LogoutLink client:idle />
       </div>
     </header>

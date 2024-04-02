@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import type { facturas } from "@/Json";
-import { obtenerUsuario } from "@/functions/app";
-import { getData } from "@/functions/peticiones";
+import type { facturas } from "#Json";
+import { obtenerUsuario } from "#functions/app";
+import { getData } from "#functions/peticiones";
 import { columns } from './columns';
 import { DataTable } from "./data-table";
 

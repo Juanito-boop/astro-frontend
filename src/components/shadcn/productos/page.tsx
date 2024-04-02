@@ -1,5 +1,5 @@
-import type { JsonCategory, productos } from "@/Json";
-import { getData } from "@/functions/peticiones";
+import type { JsonCategory, productos } from "#Json";
+import { getData } from "#functions/peticiones";
 import { useEffect, useState } from "react";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
@@ -33,7 +33,7 @@ export default function ProductsTable() {
   return (
     <>
       <div className="flex flex-col mx-10 gap-4">
-        <h1 className="justify-start text-2xl text-[#3D3F51]">Productos</h1>
+        <h1 className="justify-start text-2xl text-principal-color">Productos</h1>
         <div className="bg-[#F4E9E9] rounded-md p-4 gap-3 container mx-auto">
           <DataTable columns={columns} data={result} />
         </div>

@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { LogOut } from "../../functions/app.ts";
-import { Image } from "astro:assets";
 
 export default function LogoutLink() {
   useEffect(() => {

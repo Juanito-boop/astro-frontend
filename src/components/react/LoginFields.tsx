@@ -35,7 +35,10 @@ export default function LoginFields() {
   const handleToken = () => {
     const rol = usuario.nombre_rol
     console.log(`{ usuario: ${usuario.username}, rol: ${rol} }`);
-    const redirectUrl = rol === 'Administrador' ? '/astro-frontend/dashboard/administrador' : rol === 'Cajero' ? '/astro-frontend/dashboard/cajero/facturas' : '/'
+    const redirectUrl = 
+      rol === 'Administrador' ? '/astro-frontend/dashboard/administrador' : 
+      rol === 'Cajero' ? '/astro-frontend/dashboard/cajero/facturas' : 
+      '/'
     console.log(`{ redirectUrl: ${redirectUrl} }`);
     window.location.href = redirectUrl
   }
@@ -80,7 +83,7 @@ export default function LoginFields() {
             src="/astro-frontend/closeEye.svg" width={24} height={24} alt="Eye" id="Eye" />
         </section>
         {/* --------------------------- */}
-        <button className="bg-[#FF6861] pt-2 pb-2 rounded-md" type="submit" onClick={handleSubmit}>
+        <button className="bg-secondary-color pt-2 pb-2 rounded-md" type="submit" onClick={handleSubmit}>
           Iniciar Sesion
         </button>
       </section>

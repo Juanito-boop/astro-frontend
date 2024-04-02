@@ -64,10 +64,10 @@ const Ventas: React.FC<VentasProps> = ({ tituloTarjeta, ariaLabel }) => {
   return (
     <>
       <article>
-        <div className="rounded-t-md bg-[#FF6861] text-center py-2 px-5">{tituloTarjeta}</div>
+        <div className="rounded-t-md bg-secondary-color text-center py-2 px-5">{tituloTarjeta}</div>
         <input
           type="text"
-          className="bg-[#E9E0E0] rounded-b-md p-5 text-center"
+          className="bg-tertiary-color rounded-b-md p-5 text-center"
           value={tituloTarjeta === "Ventas anuales" ? cantidadFacturasAnuales : tituloTarjeta === "Ventas mensuales" ? cantidadFacturasMensuales : tituloTarjeta === "Ventas diarias" ? cantidadFacturasDiarias : 0}
           aria-label={ariaLabel}
           disabled

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
-import type { JsonUser } from "@/Json";
-import UsersTable from "@/components/shadcn/usuarios/page";
-import { obtenerUsuario } from "@/functions/app";
+import type { JsonUser } from "#Json";
+import UsersTable from "#components/shadcn/usuarios/page";
+import { obtenerUsuario } from "#functions/app";
 
 export default function UsersPage(){
   const usuario = obtenerUsuario();
@@ -48,13 +47,13 @@ export default function UsersPage(){
     <>
       {isLoading ? (
         <div>
-          <div className="text-2xl text-center text-[#3D3F51]">Cargando...</div>
+          <div className="text-2xl text-center text-principal-color">Cargando...</div>
         </div>
         ) : (
           <div className="grid justify-around grid-cols-2 gap-5 my-10">
             <div className="flex flex-col col-span-1 gap-4 px-10">
-              <h1 className="text-[#3D3F51] text-2xl">Administrar Usuarios</h1>
-              <form className="bg-[#FF6861] rounded-md p-4 gap-4 [&>div]:mb-3">
+              <h1 className="text-principal-color text-2xl">Administrar Usuarios</h1>
+              <form className="bg-secondary-color rounded-md p-4 gap-4 [&>div]:mb-3">
                 <div className="flex flex-col shadow-2xl">
                   <label htmlFor="user">Usuario</label>
                   <input
@@ -76,7 +75,7 @@ export default function UsersPage(){
                       src="/astro-frontend/closeEye.svg" width={24} height={24} alt="Eye" id="Eye" />
                   </div>
                 </div>
-                <button className="bg-[#3D3F51] py-2 rounded-md w-full" onClick={handleSubmit} type="submit">Guardar</button>
+                <button className="bg-principal-color py-2 rounded-md w-full" onClick={handleSubmit} type="submit">Guardar</button>
               </form>
             </div>
             <div className="col-span-1">

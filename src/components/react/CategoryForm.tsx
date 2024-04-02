@@ -1,6 +1,6 @@
-import type { JsonCategory } from "@/Json.ts";
-import { obtenerUsuario } from "@/functions/app.ts";
-import { postData } from "@/functions/peticiones.ts";
+import type { JsonCategory } from "#Json.ts";
+import { obtenerUsuario } from "#functions/app.ts";
+import { postData } from "#functions/peticiones.ts";
 import { useState } from "react";
 
 export default function NewCategoryForm() {
