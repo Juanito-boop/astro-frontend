@@ -9,8 +9,8 @@ import LayoutCajero from "#layouts/LayoutCajero.astro";
   <div class="grid grid-cols-[80%,_1fr] justify-around gap-5">
     <BillsTable client:only="react" />
     <section class="flex flex-col gap-4 my-auto">
-      <Link href="cajero/facturas/new-bill" className="rounded-md bg-principal-color p-4 mx-10 text-center align-middle text-white" set:html="Nueva Factura" />
-      <Link href="cajero/facturas/new-product" className="rounded-md bg-principal-color p-4 mx-10 text-center align-middle text-white" set:html="Nuevo Producto" />
+      <Link href="dashboard/cajero/facturas/new-bill" className="rounded-md bg-principal-color p-4 mx-10 text-center align-middle text-white" set:html="Nueva Factura" />
+      <Link href="dashboard/cajero/facturas/new-product" className="rounded-md bg-principal-color p-4 mx-10 text-center align-middle text-white" set:html="Nuevo Producto" />
     </section>
   </div>
 </Layout>

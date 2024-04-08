@@ -20,7 +20,7 @@ export default function UsersTable({ id_tienda }: { id_tienda: number, }) {
     <>
       <div className="flex flex-col gap-4 mx-10">
         <h1 className="justify-start text-2xl text-principal-color">Usuarios</h1>
-        <div className="bg-[#F4E9E9] rounded-md p-4 gap-3 container mx-auto">
+        <div className="bg-cuaternary-color rounded-md p-4 gap-3 container mx-auto">
           <DataTable columns={columns} data={result} />
         </div>
       </div>

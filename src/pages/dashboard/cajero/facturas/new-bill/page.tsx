@@ -156,22 +156,15 @@ export default function NewBillPage() {
             <div>
               <div className="my-3 flex flex-row gap-2 h-[2.5rem]">
                 <label className="w-[5%]"></label>
-                <input
-                  type="text"
-                  className="w-[30%] pl-2 rounded-md"
-                  value={`Total productos: ${products.filter((product) => product.id_producto !== 0).length}`}
-                  disabled
-                />
+                <input type="text" className="w-[30%] pl-2 rounded-md" disabled
+                  value={`Total productos: ${products.filter((product) => product.id_producto !== 0).length}`} />
                 <input type="text" className="w-[30%] pl-2 rounded-md" value={`Cajero: ${usuario.username}`} disabled />
               </div>
-              <div className="overflow-y-auto max-h-[300px]">{renderColumnasYProductosConGap(1)}</div>
+              <div className="overflow-y-auto max-h-[300px]"> {renderColumnasYProductosConGap(1)} </div>
             </div>
             <Factura
-              currentDate={currentDate}
-              sumarCantidades={sumarCantidades}
-              postFacturaGeneral={postFacturaGeneral}
-              formattedTotalBill={formatTotalBill(totalBill)}
-            />
+              currentDate={currentDate} sumarCantidades={sumarCantidades} 
+              postFacturaGeneral={postFacturaGeneral} formattedTotalBill={formatTotalBill(totalBill)} />
           </form>
         </div>
       </>

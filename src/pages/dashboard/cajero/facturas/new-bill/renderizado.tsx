@@ -35,7 +35,7 @@ export const Factura: React.FC<FacturaProps> = ({
           </div>
           <div className="flex flex-col">
             <label htmlFor="catidadTotal" className="text-black">‎</label>
-            <button type="submit" className="mx-auto bg-principal-color rounded-md text-white max-h-[2.5rem] min-h-[2.5rem] w-full" onClick={postFacturaGeneral}>Crear Factura</button>
+            <button type="submit" className="mx-auto bg-principal-color rounded-md text-tertiary-color max-h-[2.5rem] min-h-[2.5rem] w-full" onClick={postFacturaGeneral}>Crear Factura</button>
           </div>
         </div>
         <div className="flex flex-col">
@@ -126,7 +126,7 @@ export const RenderizadoProductos: React.FC<ProductoProps> = ({
               className="rounded-md h-[2.5rem] m-auto col-start-6"
               onClick={() => handleCheckButtonClick(index)}
             >
-              <img src="/check.svg" width="24" height="24" alt="check icon" className="m-auto" />
+              <img src="/astro-frontend/check.svg" width="24" height="24" alt="check icon" className="m-auto" />
             </button>
 
             <button
@@ -134,7 +134,7 @@ export const RenderizadoProductos: React.FC<ProductoProps> = ({
               className="rounded-md h-[2.5rem] m-auto col-start-7"
               onDoubleClick={() => handleTrashButtonClick(index)}
             >
-              <img src="/trash.svg" width="24" height="24" alt="trash icon" className="m-auto" />
+              <img src="/astro-frontend/trash.svg" width="24" height="24" alt="trash icon" className="m-auto" />
             </button>
           </div>
         )

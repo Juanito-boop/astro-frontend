@@ -8,6 +8,9 @@ export default {
       "principal-color":"#3D3F51",
       "secondary-color":"#FF6861",
       "tertiary-color":"#E9E0E0",
+      "cuaternary-color":"#F4E9E9",
+      "black":"#000000",
+      "white":"#FFFFFF"
     },
     container: {
       center: true,

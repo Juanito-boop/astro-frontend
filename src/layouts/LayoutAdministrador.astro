@@ -26,8 +26,8 @@ const { title } = Astro.props;
         <Link href="dashboard/cajero/facturas" className="justify-end text-tertiary-color" set:html="Sistema de Inventario" />
       </div>
       <div class="flex flex-row gap-4 align-middle [&>a]:no-underline">
-        <Link href="dashboard/administrador/usuarios" className="text-tertiary-color" set:html="usuarios" />
-        <Link href="dashboard/administrador/facturas" className="text-tertiary-color" set:html="facturas" />
+        <Link href="dashboard/administrador/usuarios"  className="text-tertiary-color" set:html="usuarios"  />
+        <Link href="dashboard/administrador/facturas"  className="text-tertiary-color" set:html="facturas"  />
         <Link href="dashboard/administrador/productos" className="text-tertiary-color" set:html="productos" />
         <LogoutLink client:idle />
       </div>
@@ -37,7 +37,7 @@ const { title } = Astro.props;
     </main>
     <footer class="bg-footer min-h-[200px] flex flex-row gap-12 justify-center">
       <Image src="/astro-frontend/SantoTomas.svg" width={199} height={58} alt="" loading="lazy" class="invert max-h-[58px] my-auto" />
-      <Image src="/astro-frontend/CCLogo.svg"     width={78 } height={58} alt="" loading="lazy" class="max-h-[58px] my-auto"        />
+      <Image src="/astro-frontend/CCLogo.svg"     width={78}  height={58} alt="" loading="lazy" class="max-h-[58px] my-auto"        />
     </footer>
   </body>
 </html>
