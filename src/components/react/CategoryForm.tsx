@@ -11,7 +11,7 @@ export default function NewCategoryForm() {
   const id = usuario.id_tienda;
 
   if (categoriaCreada) {
-    //
+    window.location.href = `/astro-frontend/dashboard/administrador/productos/new-product`;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,7 +22,7 @@ export default function NewCategoryForm() {
   const newData = async () => {
     try {
       const categoria = await postData<JsonCategory>(
-        "/api/public/categorias/crear",
+        "api/public/categorias/crear",
         {
           nombre,
           descripcion,

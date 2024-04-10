@@ -9,7 +9,7 @@ export default function UsersTable({ id_tienda }: { id_tienda: number, }) {
   const [result, setResult] = useState<JsonUser[]>([]);
   
   async function obtenerUsuarios( id_tienda: number ): Promise<JsonUser[]> {
-    return await getData<JsonUser>(`/api/public/usuario/listarInfo/${id_tienda}`);
+    return await getData<JsonUser>(`api/public/usuario/listarInfo/${id_tienda}`);
   }
   
   useEffect(() => {

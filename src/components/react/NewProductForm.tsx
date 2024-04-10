@@ -28,13 +28,15 @@ export default function newProductForm(){
   }
 
   async function fetchCategoria(): Promise<JsonCategory[]> {
-    return await getData<JsonCategory>(`/api/public/categorias`);
+    var data = await getData<JsonCategory>(`api/public/categorias/listar`);
+    console.log(data);
+    return data
   }
 
   const newData = async () => {
     try{
       const productoCreado = await postData<productos>(
-        '/api/public/productos/crear', {
+        'api/public/productos/crear', {
           nombre: nombre,
           marca: marca,
           precio_unitario: precio,

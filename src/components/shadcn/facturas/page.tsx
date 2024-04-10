@@ -11,7 +11,7 @@ export default function BillsTable() {
   const [data, setData] = useState<facturas[]>([]);
 
   async function obtenerColumnasFacturas(tienda: number): Promise<facturas[]> {
-    return await getData<facturas>(`/api/public/facturas/listarPorTienda/${tienda}`);
+    return await getData<facturas>(`api/public/facturas/listarPorTienda/${tienda}`);
   }
 
   const fetchData = async () => {

@@ -50,7 +50,7 @@ export default function NewBillPage() {
   // funciones asincronas
   async function productos(tienda: number): Promise<productos[]> {
     try {
-      return await getData<productos>(`/api/public/productos/listarPorId/${tienda}`)
+      return await getData<productos>(`api/public/productos/listarPorId/${tienda}`)
     } catch (error) {
       console.error(error)
       return []
@@ -63,7 +63,7 @@ export default function NewBillPage() {
   }
 
   async function postFacturaGeneral() {
-    return await postData(`/api/public/facturas/crear`, {
+    return await postData(`api/public/facturas/crear`, {
       fecha_venta: new Date(),
       vendedor_factura: usuario.username,
       cantidad_producto: sumarCantidades(),

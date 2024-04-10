@@ -18,13 +18,11 @@ export default function LoginFields() {
   async function fetchToken() {
     try {
       const token = await postData<string>(
-        'api/public/token/tokencreado',
-        {
+        'api/public/token/tokencreado', {
           username,
           password,
         }
       )
-      console.log(`{ token: ${token} }`);
       localStorage.setItem('token', token)
       handleToken()
     } catch (error) {
@@ -33,20 +31,23 @@ export default function LoginFields() {
   }
 
   const handleToken = () => {
-    const rol = usuario.nombre_rol
+    const rol = usuario.nombre_rol.toLowerCase();
     console.log(`{ usuario: ${usuario.username}, rol: ${rol} }`);
-    const redirectUrl = 
-      rol === 'Administrador' ? '/astro-frontend/dashboard/administrador' : 
-      rol === 'Cajero' ? '/astro-frontend/dashboard/cajero/facturas' : 
-      '/'
-    console.log(`{ redirectUrl: ${redirectUrl} }`);
-    window.location.href = redirectUrl
-  }
+
+    const roleUrlMap: { [key: string]: string } = {
+      administrador: "/astro-frontend/dashboard/administrador",
+      cajero: "/astro-frontend/dashboard/cajero/facturas",
+    };
+
+    if (roleUrlMap[rol]) {
+      window.location.href = roleUrlMap[rol];
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()    
+    e.preventDefault();    
     setFormSubmitted(true);
-  }
+  };
 
   const handleShowPassword = () => {
     const passwordField = document.querySelector('#passwordField') as HTMLInputElement
