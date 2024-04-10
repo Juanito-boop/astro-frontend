@@ -18,7 +18,7 @@ export default function newProductForm(){
   const usuario = obtenerUsuario()
 
   if(productoCreado){
-    //
+    window.location.href = `/astro-frontend/dashboard/administrador/productos`;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
