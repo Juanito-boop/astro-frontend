@@ -9,7 +9,7 @@ export default function ProductsTable() {
 
   async function obtenerProductos(): Promise<productos[]> {
     const responseProduct = await getData<productos>(`api/public/productos/listar`)
-    const responseCategory = await getData<JsonCategory>(`api/public/categorias`)
+    const responseCategory = await getData<JsonCategory>(`api/public/categorias/listar`)
     const data = responseProduct.map((producto) => ({
       ...producto,
       nombreCategoria: obtenerNombreCategoria(producto.id_categoria, responseCategory),
