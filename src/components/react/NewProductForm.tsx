@@ -28,9 +28,7 @@ export default function newProductForm(){
   }
 
   async function fetchCategoria(): Promise<JsonCategory[]> {
-    var data = await getData<JsonCategory>(`api/public/categorias/listar`);
-    console.log(data);
-    return data
+    return await getData<JsonCategory>(`api/public/categorias/listar`);
   }
 
   const newData = async () => {
@@ -54,12 +52,12 @@ export default function newProductForm(){
   }
 
   useEffect(() => {
-    // const obtenerCategorias = async () => {
-    //   const categoriasFromServer = await fetchCategoria();
-    //   setFetchCategorias(categoriasFromServer);
-    // }
+    const obtenerCategorias = async () => {
+      const categoriasFromServer = await fetchCategoria();
+      setFetchCategorias(categoriasFromServer);
+    }
 
-    // obtenerCategorias();
+    obtenerCategorias();
   }, []);
 
   return (
