@@ -11,19 +11,25 @@ import Link from "#components/Link.astro"
     <div class="flex flex-row justify-around">
       <div class="flex flex-col">
         <Link href="dashboard/administrador/usuarios">
-          <Image width={220} height={300} alt="user"     src="/astro-frontend/user.svg"     loading="eager" />
+          <Image width={220} height={300} 
+            alt="user" src="/astro-frontend/user.svg" 
+            loading="eager" />
         </Link>
         <span class="text-2xl font-semibold text-center text-principal-color" set:html="Usuarios" />
       </div>
       <div class="flex flex-col">
         <Link href="dashboard/administrador/facturas">
-          <Image width={220} height={300} alt="bills"    src="/astro-frontend/facturas.svg" loading="eager" />
+          <Image width={220} height={300} 
+            alt="bills" src="/astro-frontend/facturas.svg" 
+            loading="eager" />
         </Link>
         <span class="text-2xl font-semibold text-center text-principal-color" set:html="Facturas" />
       </div>
       <div class="flex flex-col">
         <Link href="dashboard/administrador/productos">
-          <Image width={220} height={300} alt="products" src="/astro-frontend/products.svg" loading="eager" />
+          <Image width={220} height={300} 
+            alt="products" src="/astro-frontend/products.svg" 
+            loading="eager" />
         </Link>
         <span class="text-2xl font-semibold text-center text-principal-color" set:html="Productos" />
       </div>

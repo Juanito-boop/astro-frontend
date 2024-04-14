@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { obtenerUsuario } from "../../functions/app.ts";
-import { postData } from "../../functions/peticiones.ts";
+import { obtenerUsuario } from "#functions/app";
+import { postData } from "#functions/peticiones";
 
 export default function LoginFields() {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [showPassword, setShowPassword] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false)
   const usuario = obtenerUsuario()
 
@@ -50,16 +51,9 @@ export default function LoginFields() {
   };
 
   const handleShowPassword = () => {
-    const passwordField = document.querySelector('#passwordField') as HTMLInputElement
-    const eyeToogle = document.querySelector('#Eye') as HTMLImageElement
-    if (passwordField.type === 'password') {
-      eyeToogle.src = '/astro-frontend/openEye.svg'
-      passwordField.type = 'text'
-    } else {
-      eyeToogle.src = '/astro-frontend/closeEye.svg'
-      passwordField.type = 'password'
-    }
+    setShowPassword(!showPassword);
   }
+
   return (
     <>
       <section className="flex flex-col gap-4">
@@ -77,11 +71,11 @@ export default function LoginFields() {
             id="passwordField"
             onChange={(event) => setPassword(event.target.value)} 
             className="w-full pt-3 pb-3 pl-3 pr-8 text-black rounded-md focus:outline-none focus:placeholder-transparent"
-            placeholder="*********" type="password" value={password} required />
+            placeholder="*********" type={showPassword ? 'text' : 'password'} value={password} required />
           <img
             onClick={handleShowPassword}
             className="absolute right-0 py-3 mr-3 cursor-pointer" 
-            src="/astro-frontend/closeEye.svg" width={24} height={24} alt="Eye" id="Eye" />
+            src={showPassword ? '/astro-frontend/openEye.svg' : '/astro-frontend/closeEye.svg'} width={24} height={24} alt="Eye" id="Eye" />
         </section>
         {/* --------------------------- */}
         <button className="bg-secondary-color pt-2 pb-2 rounded-md" type="submit" onClick={handleSubmit}>
