@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContent.innerHTML =
           "<p>El token ha expirado, por favor inicia sesión de nuevo.</p>";
       }
-      window.location.href = "/astro-frontend/"; // Redirige al usuario a la página de inicio de sesión
+      setTimeout(() => {
+        window.location.href = "/astro-frontend/"; // Redirige al usuario a la página de inicio de sesión
+      }, 5000);
     }
   } else {
     const mainContent = document.getElementById("main-content");
@@ -34,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
       mainContent.innerHTML =
         "<p>No se encontró un token, por favor inicia sesión.</p>";
     }
-    window.location.href = "/astro-frontend/"; // Redirige al usuario a la página de inicio de sesión
+    setTimeout(() => {
+      window.location.href = "/astro-frontend/"; // Redirige al usuario a la página de inicio de sesión
+    }, 5000);
   }
 });
