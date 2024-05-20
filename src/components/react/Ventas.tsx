@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { obtenerFecha, obtenerUsuario } from "../../functions/app.ts";
-import { getData } from "../../functions/peticiones.ts";
+import { obtenerFecha, obtenerUsuario } from "#functions/app.ts";
+import { getData } from "#functions/peticiones.ts";
 
 interface VentasProps {
   tituloTarjeta: string;
@@ -25,8 +25,8 @@ const Ventas: React.FC<VentasProps> = ({ tituloTarjeta, ariaLabel }) => {
 
   const fetchFacturasMonth = async (month: number, id_tienda: number) => {
     return await getData(
-      'api/public/facturas/listarMes'
-      , {
+      'api/public/facturas/listarMes', 
+      {
         month: month,
         tienda: id_tienda,
       }
@@ -35,8 +35,8 @@ const Ventas: React.FC<VentasProps> = ({ tituloTarjeta, ariaLabel }) => {
 
   const fetchFacturasDay = async (fecha: string, id_tienda: number) => {
     return await getData(
-      'api/public/facturas/listarDia'
-      , {
+      'api/public/facturas/listarDia', 
+      {
         day: fecha,
         tienda: id_tienda,
       }
