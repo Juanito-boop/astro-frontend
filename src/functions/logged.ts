@@ -1,27 +1,25 @@
-import { jwtDecode } from 'jwt-decode';
-import { type JsonUser } from "#Json"
+import { DecodeToken } from "./app";
 
-document.addEventListener('DOMContentLoaded', () => { 
-  const token = localStorage.getItem('token');
-  // console.log('Token:', token); // Imprime el token
+const roleUrlMap: Record<string, string> = {
+  administrador: "/astro-frontend/dashboard/administrador",
+  cajero: "/astro-frontend/dashboard/cajero/facturas",
+};
 
-  let user = null;
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
 
-  if (token) {
-    try {
-      user = jwtDecode(token) as JsonUser;
-      const rol = user.nombre_rol.toLowerCase();
-      const roleUrlMap: { [key: string]: string } = {
-        administrador: "/astro-frontend/dashboard/administrador",
-        cajero: "/astro-frontend/dashboard/cajero/facturas",
-      };
-  
-      if (roleUrlMap[rol]) {
-        window.location.href = roleUrlMap[rol];
-      }
-      console.log('User:', user); // Imprime el usuario decodificado
-    } catch (err) {
-      console.error('Invalid token:', err);
-    }
+  if (!token) {
+    console.log("No token found");
+    return;
   }
-})
+
+  const user = DecodeToken(token);
+
+  if (user) {
+    const rol = user.nombre_rol.toLowerCase();
+    if (roleUrlMap[rol]) {
+      window.location.href = roleUrlMap[rol];
+    }
+    console.log("User:", user);
+  }
+});

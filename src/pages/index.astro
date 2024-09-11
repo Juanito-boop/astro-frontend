@@ -1,33 +1,66 @@
 ---
 import "#styles/global.css";
-import { Image } from 'astro:assets';
-import LoginFields from '#components/react/LoginFields';
-import Layout from '#layouts/LayoutLogin.astro';
+import { Image } from "astro:assets";
+import LoginFields from "#components/react/LoginFields";
+import Layout from "#layouts/LayoutLogin.astro";
 ---
 
 <Layout title="Bienvenido al Sistema de inventario">
-	<div class="flex flex-col justify-between h-screen overflow-y-scroll hide-scroll-bar">
-		<header class="max-w-full">
-			<Image src="/astro-frontend/bg-header-login.svg" alt="" width={1512} height={200} loading="eager" />
-		</header>
-		<main class="flex flex-row [&>article]:w-1/2 my-2">
-			<article class="flex flex-col justify-center gap-4 leading-3">
-				<section class="flex flex-col gap-16 py-7 mx-auto [&>p]:text-principal-color [&>p]:text-[80px] [&>p]:font-bold [&>p]:tracking-tight [&>p]:mx-auto">
-					<p>Sistema de</p>
-					<p>Inventario</p>
-				</section>
-				<Image src="/astro-frontend/loginGuy.svg" alt="" width={379} height={366} class="mx-auto" loading="eager"/>
-			</article>
-			<article class="flex flex-col justify-center px-10 text-white flex-end start-2">
-				<form class="w-full bg-principal-color p-16 mt-auto mb-auto rounded-[25px]">
-					<h1 class="text-2xl leading-8 text-center">Bienvenido</h1>
-					<LoginFields client:load />
-				</form>
-			</article>
-		</main>
-		<footer class="flex flex-row justify-center w-full gap-12 pb-4 mt-2">
-			<Image src="/astro-frontend/SantoTomas.svg" alt="" width={199} height={58} loading="lazy" />
-			<Image src="/astro-frontend/CCLogo.svg    " alt="" width={78} height={58} loading="lazy" />
-		</footer>
-	</div>
+  <div
+    class="flex flex-col justify-between h-screen overflow-y-scroll hide-scroll-bar"
+  >
+    <header class="max-w-full">
+      <Image
+        src="/astro-frontend/bg-header-login.svg"
+        alt=""
+        width={1512}
+        height={200}
+        loading="eager"
+      />
+    </header>
+    <main class="flex flex-row [&>article]:w-1/2 my-2">
+      <article class="flex flex-col justify-center gap-4 leading-3">
+        <section
+          class="flex flex-col gap-16 py-7 mx-auto [&>p]:text-principal-color [&>p]:text-[80px] [&>p]:font-bold [&>p]:tracking-tight [&>p]:mx-auto"
+        >
+          <p>Sistema de</p>
+          <p>Inventario</p>
+        </section>
+        <Image
+          src="/astro-frontend/loginGuy.svg"
+          alt=""
+          width={379}
+          height={366}
+          class="mx-auto"
+          loading="eager"
+        />
+      </article>
+      <article
+        class="flex flex-col justify-center px-10 text-white flex-end start-2"
+      >
+        <form
+          class="w-full bg-principal-color p-16 mt-auto mb-auto rounded-[25px]"
+        >
+          <h1 class="text-2xl leading-8 text-center">Bienvenido</h1>
+          <LoginFields client:only="react" />
+        </form>
+      </article>
+    </main>
+    <footer class="flex flex-row justify-center w-full gap-12 pb-4 mt-2">
+      <Image
+        src="/astro-frontend/SantoTomas.svg"
+        alt=""
+        width={199}
+        height={58}
+        loading="lazy"
+      />
+      <Image
+        src="/astro-frontend/CCLogo.svg    "
+        alt=""
+        width={78}
+        height={58}
+        loading="lazy"
+      />
+    </footer>
+  </div>
 </Layout>

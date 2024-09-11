@@ -1,56 +1,50 @@
 import { jwtDecode } from 'jwt-decode';
+import { format } from 'date-fns';
 import { useEffect, useState } from "react";
 import type { JsonUser } from '../Json';
 
 export function LogOut() {
-  const token = localStorage.getItem('token');
-  if (token) {
-    localStorage.removeItem('token');
-    window.location.href = '/';
-  }
+	localStorage.removeItem('token');
+	window.location.href = '/';
 }
 
-export function DecodeToken( token: string ): JsonUser | null {
-  try {
-    const decodedToken = jwtDecode( token ) as JsonUser;
-    return decodedToken;
-  } catch (error) {
-    console.error('Error decoding token:', error);
-    return null;
-  }
+export function DecodeToken(token: string): JsonUser | null {
+	try {
+		return jwtDecode(token) as JsonUser;
+	} catch (error) {
+		console.error('Error decoding token:', error);
+		return null;
+	}
 }
 
 export function obtenerFecha() {
-  const dateObj = new Date()
-  const year = dateObj.getFullYear()
-  const month = ('0' + (dateObj.getMonth() + 1)).slice(-2)
-  const day = ('0' + dateObj.getDate()).slice(-2)
-  return `${year}/${month}/${day}`
+	const dateObj = new Date();
+	return format(dateObj, 'yyyy/MM/dd');
 }
 
 export function obtenerUsuario() {
-  const [token, setToken] = useState<string>('')
+	const [token, setToken] = useState<string>('')
 
-  useEffect(() => {
-    const getToken = () => {
-      if (typeof window !== 'undefined') {
-        setToken(window.localStorage.getItem('token') || '')
-      }
-    }
+	useEffect(() => {
+		const getToken = () => {
+			if (typeof window !== 'undefined') {
+				setToken(window.localStorage.getItem('token') || '')
+			}
+		}
 
-    getToken();
-  }, [])
-  if (token) {
-    const decodedToken = jwtDecode<JsonUser>(token);
-    const { nombre_rol, username, id_tienda, iat, exp } = decodedToken;
-    return { nombre_rol, username, id_tienda, iat, exp };
-  } else {
-    return {
-      nombre_rol: '',
-      username: '',
-      id_tienda: 0,
-      iat: 0,
-      exp: 0,
-    };
-  }
+		getToken();
+	}, [])
+	if (token) {
+		const decodedToken = jwtDecode<JsonUser>(token);
+		const { nombre_rol, username, id_tienda, iat, exp } = decodedToken;
+		return { nombre_rol, username, id_tienda, iat, exp };
+	} else {
+		return {
+			nombre_rol: '',
+			username: '',
+			id_tienda: 0,
+			iat: 0,
+			exp: 0,
+		};
+	}
 }

@@ -22,7 +22,7 @@ export default function NewCategoryForm() {
   const newData = async () => {
     try {
       const categoria = await postData<JsonCategory>(
-        "api/public/categorias/crear",
+        "api/v1/public/categorias/",
         {
           nombre,
           descripcion,
@@ -36,11 +36,9 @@ export default function NewCategoryForm() {
     }
   };
   return (
-    <>
-      <form 
-        className="bg-secondary-color rounded-md grid p-4 grid-cols-2 gap-y-2 [&>input]:p-2 [&>input]:rounded-md [&>div>input]:p-2 [&>div>input]:rounded-md">
+      <form className="bg-secondary-color rounded-md grid p-4 grid-cols-2 gap-y-2 [&>input]:p-2 [&>input]:rounded-md [&>div>input]:p-2 [&>div>input]:rounded-md">
         <div className="flex flex-col col-span-2">
-          <label htmlFor="nombre">Nombre</label>
+          <label htmlFor="nombre" children="Nombre"/>
           <input
             type="text"
             name="nombre"
@@ -49,7 +47,7 @@ export default function NewCategoryForm() {
           />
         </div>
         <div className="flex flex-col col-span-2">
-          <label htmlFor="desc">Descripcion</label>
+          <label htmlFor="desc" children="Descripcion"/>
           <input
             type="text"
             placeholder="Descripcion de la categoria"
@@ -60,6 +58,5 @@ export default function NewCategoryForm() {
           Guardar
         </button>
       </form>
-    </>
   );
 }

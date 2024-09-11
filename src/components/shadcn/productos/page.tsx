@@ -3,32 +3,44 @@ import { getData } from "#functions/peticiones";
 import { useEffect, useState } from "react";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
+import { obtenerUsuario } from "#functions/app";
 
 export default function ProductsTable() {
   const [result, setResult] = useState<productos[]>([])
+  const usuario = obtenerUsuario()
+  const tienda = usuario?.id_tienda
 
   async function obtenerProductos(): Promise<productos[]> {
-    const responseProduct = await getData<productos>(`api/public/productos/listar`)
-    const responseCategory = await getData<JsonCategory>(`api/public/categorias/listar`)
-    const data = responseProduct.map((producto) => ({
+    if (!tienda) return [];
+
+    const [responseProduct, responseCategory] = await Promise.all([
+      getData<productos>(`api/v1/public/productos/${tienda}`),
+      getData<JsonCategory>(`api/v1/public/categorias/${tienda}`),
+    ]);
+
+    return responseProduct.map((producto) => ({
       ...producto,
-      nombreCategoria: obtenerNombreCategoria(producto.id_categoria, responseCategory),
-    }))
-    return data
+      nombreCategoria: obtenerNombreCategoria(
+        producto.id_categoria,
+        responseCategory
+      ),
+    }));
   }
 
-  const obtenerNombreCategoria = (idCategoria: number, categorias: JsonCategory[]): string | undefined => {
-    const categoriaEncontrada = categorias.find((categoria) => categoria.id_categoria === idCategoria)
-    if (categoriaEncontrada) {
-      return categoriaEncontrada.nombre
-    }
-    return undefined
-  }
+  const obtenerNombreCategoria = (
+    idCategoria: number,
+    categorias: JsonCategory[]
+  ): string | undefined => {
+    return (
+      categorias.find((categoria) => categoria.id_categoria === idCategoria)
+        ?.nombre || undefined
+    );
+  };
 
 
   useEffect(() => {
     obtenerProductos().then((data) => setResult(data))
-  }, [])
+  }, [tienda])
 
   return (
     <>

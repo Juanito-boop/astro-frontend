@@ -1,20 +1,23 @@
 
 import type { JsonUser } from "#Json";
 import { getData } from "#functions/peticiones";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
 export default function UsersTable({ id_tienda }: { id_tienda: number, }) {
   const [result, setResult] = useState<JsonUser[]>([]);
-  
-  async function obtenerUsuarios( id_tienda: number ): Promise<JsonUser[]> {
-    return await getData<JsonUser>(`api/public/usuario/listarInfo/${id_tienda}`);
-  }
-  
+
+  const obtenerUsuarios = useCallback(async (id_tienda: number): Promise<JsonUser[]> => {
+    const data = await getData<JsonUser>(`api/v1/public/usuarios/${id_tienda}`);
+    return data;
+  }, []);
+
   useEffect(() => {
-    obtenerUsuarios( id_tienda ).then(data => setResult(data));
-  }, [id_tienda]);
+    if (id_tienda) {
+      obtenerUsuarios(id_tienda).then(data => setResult(data));
+    }
+  }, [id_tienda, obtenerUsuarios]);
   
   return (
     <>

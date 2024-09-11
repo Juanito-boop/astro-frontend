@@ -1,6 +1,4 @@
-'use client'
-
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { facturas } from "#Json";
 import { obtenerUsuario } from "#functions/app";
 import { getData } from "#functions/peticiones";
@@ -9,29 +7,28 @@ import { DataTable } from "./data-table";
 
 export default function BillsTable() {
   const [data, setData] = useState<facturas[]>([]);
+  const usuario = obtenerUsuario();
+  const tienda = usuario?.id_tienda;
 
-  async function obtenerColumnasFacturas(tienda: number): Promise<facturas[]> {
-    return await getData<facturas>(`api/public/facturas/listarPorTienda/${tienda}`);
-  }
+  const obtenerColumnasFacturas = async (tienda: number): Promise<facturas[]> => {
+    return getData<facturas>(`api/v1/public/facturas/${tienda}`);
+  };
 
-  const fetchData = async () => {
-    const usuario = obtenerUsuario()
-    const tienda = usuario?.id_tienda
-
-    if (tienda != undefined){
+  const fetchData = useCallback(async () => {
+    if (tienda) {
       const result = await obtenerColumnasFacturas(tienda);
-      const modifiedResult = result.map(item => {
-        const fecha = new Date(item.fecha_venta);
-        return { ...item, fecha_venta: fecha.toISOString().split('T')[0] };
-      });
+      const modifiedResult = result.map((item) => ({
+        ...item,
+        fecha_venta: new Date(item.fecha_venta).toISOString().split("T")[0],
+      }));
       setData(modifiedResult);
     }
-  }
+  }, [tienda]);
 
   useEffect(() => {
-    // fetchData();
-  }, []);
-
+    fetchData();
+  }, [fetchData]);
+  
   return (
     <>
       <div className="flex flex-col gap-4 mx-10">

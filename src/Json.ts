@@ -49,10 +49,17 @@ export interface FacturasGeneral {
   id_tienda: number;
 }
 
+export interface FacturaInfo {
+  fecha_venta: Date,
+  vendedor_factura: string,
+  cantidad_producto: number,
+  id_tienda: number;
+}
+
 export interface DetallesFacturas {
   id_factura: number;
   id_producto: number;
-  cantitad_producto: number;
+  cantidad_producto: number | null;
   fecha_creacion: Date;
 }
 
@@ -90,4 +97,25 @@ export interface ProductoProps {
   ) => void;
   handleCheckButtonClick: (index: number) => void;
   handleTrashButtonClick: (index: number) => void;
+}
+
+export interface VentasProps {
+  tituloTarjeta: string;
+  ariaLabel?: string;
+}
+
+export interface ProductData {
+  count: number;
+}
+
+export interface DailyInvoices {
+	facturas_diarias: number;
+}
+
+export interface MonthlyInvoices {
+	facturas_mensuales: 0
+}
+
+export interface AnnualInvoices {
+	facturas_anuales: number;
 }

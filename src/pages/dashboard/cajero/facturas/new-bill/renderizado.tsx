@@ -14,38 +14,6 @@ export function RenderColumnas(gap: number) {
   );
 }
 
-export const Factura: React.FC<FacturaProps> = ({
-  currentDate,
-  sumarCantidades,
-  postFacturaGeneral,
-  formattedTotalBill,
-}) => {
-  return (
-    <div className="mt-3">
-      <h2 className="text-black text-center text-2xl">FACTURA</h2>
-      <div className="flex flex-col gap-3">
-        <div className="grid grid-flow-col grid-cols-3 gap-x-1">
-          <div className="flex flex-col">
-            <label htmlFor="fecha" className="text-black">Fecha</label>
-            <input type="text" name="fecha" className="bg-white/80 px-2 h-[2.5rem] rounded-md" value={currentDate} disabled />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="catidadTotal" className="text-black">Productos</label>
-            <input type="text" name="cantidadTotal" className="bg-white/80 px-2 h-[2.5rem] rounded-md" value={sumarCantidades().toString()} disabled />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="catidadTotal" className="text-black">‎</label>
-            <button type="submit" className="mx-auto bg-principal-color rounded-md text-tertiary-color max-h-[2.5rem] min-h-[2.5rem] w-full" onClick={postFacturaGeneral}>Crear Factura</button>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="total" className="text-black">Total de Factura</label>
-          <input type="text" name="total" className="w-full bg-white/80 px-2 h-[2.5rem] rounded-md" value={formattedTotalBill} disabled />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 export const RenderizadoProductos: React.FC<ProductoProps> = ({
   gap,
@@ -75,7 +43,7 @@ export const RenderizadoProductos: React.FC<ProductoProps> = ({
                 className="rounded-md h-[2.5rem] w-full m-auto col-start-1 bg-principal-color"
                 onClick={handlePlusButtonClick}
               >
-                <img src="/plus.svg" width="24" height="24" alt="plus icon" className="m-auto" />
+                <img src="/astro-frontend/plus.svg" width="24" height="24" alt="plus icon" className="m-auto" />
               </button>
             )}
             <select
